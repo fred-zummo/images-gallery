@@ -7,8 +7,8 @@ from dotenv import load_dotenv
 load_dotenv(dotenv_path="./.env.local")
 
 UNSPLASH_URL = "https://api.unsplash.com/photos/random"
-UNSPLASH_KEY = os.environ.get("UNSPLASH_KEY", "")
-DEBUG=bool(os.environ.get("DEBUG"))
+UNSPLASH_KEY = os.getenv('UNSPLASH_KEY', '')
+DEBUG=os.getenv('DEBUG', 'False')
 
 print(DEBUG)
 
@@ -16,7 +16,12 @@ if not UNSPLASH_KEY:
   raise EnvironmentError("Required UNSPLASH_KEY missing from .env.local file")
 
 app = Flask(__name__)
-app.config["DEBUG"] = False
+
+if (DEBUG == 'True'):
+  app.config["DEBUG"] = True
+else:
+  app.config["BEBUG"] = False
+
 CORS(app)
 
 @app.route("/new-image")
