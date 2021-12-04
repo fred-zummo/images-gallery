@@ -7,3 +7,6 @@
 
 # python flask
 .venv
+
+# docker
+docker-compose.yml
