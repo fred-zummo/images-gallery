@@ -42,7 +42,13 @@ const App = () => {
     setWord('');
   };
 
-  const handleDeleteImage = (id) => {
+  const handleDeleteImage = async (id) => {
+    let del_image_uri = `${images_uri}/${id}`;
+    try {
+      const res = await axios.delete(del_image_uri);
+    } catch (error) {
+      console.log(error);
+    }
     setImages(images.filter((image) => image.id !== id));
   };
 
