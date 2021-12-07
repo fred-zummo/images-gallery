@@ -46,10 +46,13 @@ const App = () => {
     let del_image_uri = `${images_uri}/${id}`;
     try {
       const res = await axios.delete(del_image_uri);
+      if (res.data?.deleted_id === id) {
+        console.log('Deleted image id ' + id);
+        setImages(images.filter((image) => image.id !== id));
+      }
     } catch (error) {
       console.log(error);
     }
-    setImages(images.filter((image) => image.id !== id));
   };
 
   const handleSaveImage = async (id) => {
@@ -57,7 +60,8 @@ const App = () => {
     imageToBeSaved.saved = true;
     try {
       const res = await axios.post(images_uri, imageToBeSaved);
-      if (res.data?.inserted_id) {
+      if (res.data?.inserted_id === id) {
+        console.log('Saved image id ' + id);
         setImages(
           images.map((image) =>
             image.id === id ? { ...image, saved: true } : image
