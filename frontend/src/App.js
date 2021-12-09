@@ -50,7 +50,8 @@ const App = () => {
     try {
       const res = await axios.get(new_image_uri);
       setImages([{ ...res.data, title: word }, ...images]);
-      toast.info(`New image ${word} was found`, {
+      const title = word.toUpperCase();
+      toast.info(`New image ${title} was found`, {
         position: toast.POSITION.BOTTOM_RIGHT,
       });
     } catch (error) {
