@@ -35,6 +35,9 @@ const App = () => {
       });
     } catch (error) {
       console.log(error);
+      toast.error(error.message, {
+        position: toast.POSITION.BOTTOM_RIGHT,
+      });
     }
   };
 
@@ -52,7 +55,7 @@ const App = () => {
       });
     } catch (error) {
       console.log(error);
-      toast.error(error, {
+      toast.error(error.message, {
         position: toast.POSITION.BOTTOM_RIGHT,
       });
     }
@@ -76,7 +79,7 @@ const App = () => {
       }
     } catch (error) {
       console.log(error);
-      toast.error(error, {
+      toast.error(error.message, {
         position: toast.POSITION.BOTTOM_RIGHT,
       });
     }
@@ -100,7 +103,7 @@ const App = () => {
       }
     } catch (error) {
       console.log(error);
-      toast.error(error, {
+      toast.error(error.message, {
         position: toast.POSITION.BOTTOM_RIGHT,
       });
     }
